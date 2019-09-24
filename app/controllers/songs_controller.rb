@@ -4,6 +4,7 @@ class SongsController < ApplicationController
     end
 
     def new
+      @song = Song.new
     end
 
     def create
@@ -20,8 +21,27 @@ class SongsController < ApplicationController
       @song = Song.find_by_id(params[:id])
     end
 
+    def update
+      #binding.pry
+      @song = Song.find_by_id(params[:id])
+      @song.update(song_params)
+
+      if @song.save
+        redirect_to song_path(@song)
+      else
+        render :edit
+      end
+    end
+
     def show
       @song = Song.find_by_id(params[:id])
+    end
+
+    def destroy
+      #binding.pry
+      @song = Song.find_by_id(params[:id])
+      @song.destroy
+      redirect_to songs_path
     end
 
   private
