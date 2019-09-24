@@ -23,10 +23,17 @@ class SongsController < ApplicationController
 
     def update
       #binding.pry
-      @song = Song.find_by_id(params[:id])
-      @song.update(song_params)
+      # @song = Song.find_by_id(params[:id])
+      # @song.update(song_params)
 
-      if @song.save
+      # if @song.save
+      #   redirect_to song_path(@song)
+      # else
+      #   render :edit
+      # end
+      @song = Song.find_by_id(params[:id])
+
+      if @song.update(song_params)
         redirect_to song_path(@song)
       else
         render :edit
@@ -38,7 +45,6 @@ class SongsController < ApplicationController
     end
 
     def destroy
-      #binding.pry
       @song = Song.find_by_id(params[:id])
       @song.destroy
       redirect_to songs_path
