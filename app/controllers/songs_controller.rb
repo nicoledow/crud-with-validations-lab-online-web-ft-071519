@@ -22,15 +22,6 @@ class SongsController < ApplicationController
     end
 
     def update
-      #binding.pry
-      # @song = Song.find_by_id(params[:id])
-      # @song.update(song_params)
-
-      # if @song.save
-      #   redirect_to song_path(@song)
-      # else
-      #   render :edit
-      # end
       @song = Song.find_by_id(params[:id])
 
       if @song.update(song_params)
