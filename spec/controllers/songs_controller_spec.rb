@@ -60,7 +60,7 @@ RSpec.describe SongsController, type: :controller do
     before { post :create, params: { song: invalid_attributes} }
 
     it "has not been persisted" do
-      expect(assigns(:song)).to be_new_record
+      expect(assigns(:song)).to_not be_new_record
     end
 
     it "re-renders the template" do
